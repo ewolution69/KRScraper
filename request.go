@@ -22,5 +22,10 @@ func requestMovieData(movieName string) {
 	}
 	data := MovieData{}
 	json.Unmarshal([]byte(body), &data)
-	fmt.Println(data.Title)
+
+	fmt.Println("Moviename: ", data.Title)
+	fmt.Println("Release: ", data.Released)
+	fmt.Println("Poster: ", data.Poster)
+	fmt.Println("Genre: ", data.Genre)
+	fmt.Println("IMDB ID: ", data.ImdbID)
 }
