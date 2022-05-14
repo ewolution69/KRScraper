@@ -1,12 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 )
 
-func requestData(movieName string) {
+func requestMovieData(movieName string) {
 	fmt.Println("Search for Moviedata: ", movieName)
 	apiKey := loadConfigurationFromFile().ApiKey
 	searchstring := "http://www.omdbapi.com/?t=" + movieName + "&apikey=" + apiKey
@@ -19,6 +20,7 @@ func requestData(movieName string) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	sb := string(body)
-	fmt.Println(sb)
+	data := MovieData{}
+	json.Unmarshal([]byte(body), &data)
+	fmt.Println(data.Title)
 }

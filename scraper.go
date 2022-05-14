@@ -10,5 +10,5 @@ func main() {
 	flag.StringVar(&movieName, "m", "movie", "moviename to search")
 	flag.Parse()
 
-	requestData(movieName)
+	requestMovieData(movieName)
 }
